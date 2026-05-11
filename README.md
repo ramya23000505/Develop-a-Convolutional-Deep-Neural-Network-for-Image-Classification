@@ -75,40 +75,45 @@ class CNNClassifier(nn.Module):
         x = self.fc3(x)
         return x
 
-# Initialize the Model, Loss Function, and Optimizer
-model =
-criterion =
-optimizer =
+# Initialize model, loss function, and optimizer
+model = CNNClassifier()
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(),lr=0.001)
 
-# Train the Model
+## Step 3: Train the Model
 def train_model(model, train_loader, num_epochs=3):
-
     # write your code here
-
-        
-        
-        
-        print('Name:        ')
-        print('Register Number:       ')
+    for epoch in range(num_epochs):
+        model.train()
+        running_loss=0.0
+        for images,labels in train_loader:
+            optimizer.zero_grad()
+            outputs=model(images)
+            loss=criterion(outputs,labels)
+            loss=criterion(outputs,labels)
+            loss.backward()
+            optimizer.step()
+            running_loss+=loss.item()
+        print('Name: RAMYA R')
+        print('Register Number: 212223230169')
         print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {running_loss/len(train_loader):.4f}')
-
 ```
 
 ### OUTPUT
 
 ## Training Loss per Epoch
 
-Include the Training Loss per epoch
+<img width="529" height="313" alt="image" src="https://github.com/user-attachments/assets/ba674c1c-6639-4380-9412-601e75a8c5d6" />
 
 ## Confusion Matrix
-
-Include confusion matrix here
+<img width="361" height="70" alt="image" src="https://github.com/user-attachments/assets/2aec004f-3675-4869-bb7a-70a29c562e53" />
+<img width="720" height="640" alt="image" src="https://github.com/user-attachments/assets/dfefb741-09d7-46f8-b251-6d6d9ecfa553" />
 
 ## Classification Report
-Include classification report here
+<img width="552" height="426" alt="image" src="https://github.com/user-attachments/assets/6f51e25a-c959-47e9-801c-636e4dfe9dab" />
 
 ### New Sample Data Prediction
-Include your sample input and output here
+<img width="527" height="617" alt="image" src="https://github.com/user-attachments/assets/901aa4da-ba4d-41bb-b625-f33efbbf6b71" />
 
 ## RESULT
 The Convolutional Neural Network (CNN) model was successfully trained and achieved good classification performance on the given image dataset.
